@@ -62,16 +62,16 @@ Applied to a Transformer's attention layers:
 ## Quick Start
 
 bash
-# setup
+setup
 pip install -r requirements.txt
 
-# quick demo (~2-3 min on CPU)
+quick demo (~2-3 min on CPU)
 python demo.py
 
-# full experiment (~15-20 min on CPU, faster on GPU)
+full experiment (~15-20 min on CPU, faster on GPU)
 python train.py
 
-# or run the full experiment in demo mode
+or run the full experiment in demo mode
 python train.py --demo
 
 
