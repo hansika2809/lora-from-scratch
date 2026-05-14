@@ -59,22 +59,6 @@ Applied to a Transformer's attention layers:
 └──────────────────────────────────────────────┘
 
 
-## Project Structure
-
-
-lora-from-scratch/
-├── src/
-│   ├── transformer.py    # GPT-2 style model from scratch
-│   ├── lora.py           # LoRA layer, apply/merge/count utilities
-│   ├── config.py         # Dataclass configs for model, LoRA, training
-│   ├── dataset.py        # Shakespeare dataset + char tokenizer
-│   └── utils.py          # Training loop, evaluation, plotting
-├── train.py              # Full experiment (pretrain → FT → LoRA → compare)
-├── demo.py               # Quick 2-min demo
-├── requirements.txt      # torch, numpy, matplotlib 
-└── README.md
-
-
 ## Quick Start
 
 bash
@@ -115,7 +99,6 @@ python train.py --demo
 Running 'python train.py --demo` on a small GPT (128d, 4 heads, 4 layers):
 
 | Method | Trainable Params | Val Loss | Training Time |
-|--------|:---:|:---:|:---:|
 | Pretrained (no FT) | 621K (100%) | ~1.8 | ~60s |
 | Full Fine-tuning | 621K (100%) | ~1.5 | ~25s |
 | LoRA (r=4, α=8) | ~4K (0.7%) | ~1.6 | ~25s |
@@ -123,8 +106,6 @@ Running 'python train.py --demo` on a small GPT (128d, 4 heads, 4 layers):
 Key takeaway: LoRA achieves ~95% of full fine-tuning performance with <1% of the trainable parameters.
 
 Weight merging verification: pre-merge and post-merge losses match to <1e-6, confirming zero inference overhead.
-
-*(Results will vary slightly due to random initialization. Run `train.py` for the full-scale experiment.)*
 
 ## What I Learned
 
