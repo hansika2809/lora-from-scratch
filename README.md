@@ -36,28 +36,6 @@ The beautiful part: B is initialized to zero, so ΔW = 0 at the start of trainin
                    Trainable LoRA path
 
 
-Applied to a Transformer's attention layers:
-
-
-┌──────────────────────────────────────────────┐
-│              Transformer Block               │
-│                                              │
-│   ┌──────────────────────────────────────┐   │
-│   │       Multi-Head Self-Attention      │   │
-│   │                                      │   │
-│   │   Q = LoRA(q_proj)(x)   ← adapted   │   │
-│   │   K = k_proj(x)         ← frozen    │   │
-│   │   V = LoRA(v_proj)(x)   ← adapted   │   │
-│   │   Out = out_proj(attn)  ← frozen    │   │
-│   │                                      │   │
-│   └──────────────────────────────────────┘   │
-│                    ↓                         │
-│   ┌──────────────────────────────────────┐   │
-│   │        Feed-Forward Network          │   │
-│   │        (frozen, no LoRA)             │   │
-│   └──────────────────────────────────────┘   │
-└──────────────────────────────────────────────┘
-
 
 ## Quick Start
 
@@ -99,9 +77,18 @@ python train.py --demo
 Running 'python train.py --demo` on a small GPT (128d, 4 heads, 4 layers):
 
 | Method | Trainable Params | Val Loss | Training Time |
-| Pretrained (no FT) | 621K (100%) | ~1.8 | ~60s |
-| Full Fine-tuning | 621K (100%) | ~1.5 | ~25s |
-| LoRA (r=4, α=8) | ~4K (0.7%) | ~1.6 | ~25s |
+**Pretrained (no FT)**-
+Trainable Params ~ 621K (100%) 
+Val Loss ~ 1.8
+Training Time ~ 60s 
+**Full Fine-tuning** -
+Trainable Params ~ 621K (100%)
+Val Loss ~ 1.5 
+Training Time ~ 25s
+**LoRA (r=4, α=8)**-
+Trainable Params ~ 4K (0.7%) 
+Val Loss ~ 1.6 
+Training Time ~ 25s
 
 Key takeaway: LoRA achieves ~95% of full fine-tuning performance with <1% of the trainable parameters.
 
