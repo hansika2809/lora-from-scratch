@@ -76,15 +76,18 @@ python train.py --demo
 
 Running 'python train.py --demo` on a small GPT (128d, 4 heads, 4 layers):
 
-| Method | Trainable Params | Val Loss | Training Time |
 **Pretrained (no FT)**-
 Trainable Params ~ 621K (100%) 
 Val Loss ~ 1.8
 Training Time ~ 60s 
+
+
 **Full Fine-tuning** -
 Trainable Params ~ 621K (100%)
 Val Loss ~ 1.5 
 Training Time ~ 25s
+
+
 **LoRA (r=4, α=8)**-
 Trainable Params ~ 4K (0.7%) 
 Val Loss ~ 1.6 
