@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+data/
+checkpoints/
+figures/
+*.pt
+*.pth
+.venv/
+.env
